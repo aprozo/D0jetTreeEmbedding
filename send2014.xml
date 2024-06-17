@@ -1,0 +1,48 @@
+<job  name="HIOverlay" minFilesPerProcess="20" maxFilesPerProcess="20" fileListSyntax="xrootd" simulateSubmission ="false" >
+	
+<!-- <input URL="catalog:star.bnl.gov?production=P16ij,trgsetupname=AuAu_200_production_2016,filename~st_physics,filetype=daq_reco_picoDst,library=SL20c,runnumber[]17062049-17179012,storage!=hpss" preferStorage="local" singleCopy="true" nFiles="5000" /> -->
+<input URL="filelist:/gpfs01/star/pwg/prozorov/HFjets/myJetFramework/lists/RandomizedRun14.list" nFiles="20000" />
+<stdout URL="file:/gpfs01/star/pwg/prozorov/output/HeavyIonOverlayForD0Pythia/2014/out/$JOBID.out" />
+<stderr URL="file:/gpfs01/star/pwg/prozorov/output/HeavyIonOverlayForD0Pythia/2014/out/$JOBID.err" />
+                
+<Generator>
+<Location>/gpfs01/star/pwg/prozorov/output/HeavyIonOverlayForD0Pythia/2014/report/</Location>
+<ScriptLocation>/gpfs01/star/pwg/prozorov/output/HeavyIonOverlayForD0Pythia/2014/csh/</ScriptLocation>
+<ListLocation>./lists/</ListLocation>
+</Generator>
+                                                
+<command>
+	starver pro
+	setenv FASTJET /gpfs01/star/pwg/prozorov/install/fastjet-install
+    set MCFILENAME = "./lists/embedding2014.list"
+    @ nFile=0
+	
+    while ( $nFile &lt; $INPUTFILECOUNT )
+		date
+        eval set filename = '$INPUTFILE'$nFile
+		echo $filename
+		shuf -n 50 ${MCFILENAME} &gt; ${JOBID}${nFile}.list
+		cp `cat ${JOBID}${nFile}.list` .
+		ls rcf*.root &gt; ${JOBID}${nFile}_MC.list
+		eval set inputmcfilename = ${JOBID}${nFile}_MC.list
+		root -l -b -q RunHeavyIonOverlayAngularities.C\(\"$filename\",\"$inputmcfilename\",\"$JOBID$nFile\",10000000,\"$JOBID$nFile\"\) &gt; ./${JOBID}${nFile}.log
+		date
+	    @ nFile++
+	end
+</command>
+
+<output fromScratch="*jets.root" toURL="/gpfs01/star/pwg/prozorov/output/HeavyIonOverlayForD0Pythia/2014/production/" />
+<output fromScratch="*.log" toURL="/gpfs01/star/pwg/prozorov/output/HeavyIonOverlayForD0Pythia/2014/production/" />
+<SandBox installer="ZIP">
+	<Package name="LocalLibraries">
+	<File>file:./StRoot/</File>
+	<File>file:./fastjet</File>
+	<File>file:./siscone</File>
+	<File>file:./.sl73_gcc485/</File>
+	<File>file:./RunHeavyIonOverlayAngularities.C</File>
+	<File>file:./lists/test2014.list</File>
+	<File>file:./lists/embedding2014.list</File>
+	</Package>
+</SandBox>
+
+</job>
