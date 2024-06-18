@@ -12,7 +12,7 @@ The main source file for StHIOverlayAngularities [RunHeavyIonOverlayAngularities
 
 Some important links in code :
 
-* First, find original PYTHIA jets (MC jets): [line 621](StRoot/StMyAnalysisMaker/StHIOverlayAngularities.cxx#L621)
+* First, find original PYTHIA jets (MC jets): [line 621](/StRoot/StMyAnalysisMaker/StHIOverlayAngularities.cxx#L621)
 
 * Then, find reconstructed PYTHIA jets (MC Reco jets): [line 788](StRoot/StMyAnalysisMaker/StHIOverlayAngularities.cxx#L621)
 
