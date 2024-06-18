@@ -8,19 +8,19 @@ Macro for analisis is `RunHeavyIonOverlayAngularities.C`, to run it for testing 
 root -l RunHeavyIonOverlayAngularities.C
 ```
 
-The main source file for StHIOverlayAngularities [RunHeavyIonOverlayAngularities.C#L281](RunHeavyIonOverlayAngularities.C#L281) is in [StRoot/StMyAnalysisMaker/StHIOverlayAngularities.cxx](./StRoot/StMyAnalysisMaker/StHIOverlayAngularities.cxx)
+The main source file for StHIOverlayAngularities [RunHeavyIonOverlayAngularities.C#L281](RunHeavyIonOverlayAngularities.C#L281) is in [StRoot/StMyAnalysisMaker/StHIOverlayAngularities.cxx](StRoot/StMyAnalysisMaker/StHIOverlayAngularities.cxx)
 
 Some important links in code :
 
-* First, find original PYTHIA jets (MC jets): [line 621](./StRoot/StMyAnalysisMaker/StHIOverlayAngularities.cxx#L621)
+* First, find original PYTHIA jets (MC jets): [line 621](StRoot/StMyAnalysisMaker/StHIOverlayAngularities.cxx#L621)
 
-* Then, find reconstructed PYTHIA jets (MC Reco jets): [line 788](./StRoot/StMyAnalysisMaker/StHIOverlayAngularities.cxx#L621)
+* Then, find reconstructed PYTHIA jets (MC Reco jets): [line 788](StRoot/StMyAnalysisMaker/StHIOverlayAngularities.cxx#L621)
 
-* The last part is to embed those MC Reco jets into Heavy-Ion environments and try to find $D^0$ jets there (Reco jets): [line 861](./StRoot/StMyAnalysisMaker/StHIOverlayAngularities.cxx#L861)
+* The last part is to embed those MC Reco jets into Heavy-Ion environments and try to find $D^0$ jets there (Reco jets): [line 861](StRoot/StMyAnalysisMaker/StHIOverlayAngularities.cxx#L861)
 
-* Background subtraction is done here : [line 1135](./StRoot/StMyAnalysisMaker/StHIOverlayAngularities.cxx#L1135)
+* Background subtraction is done here : [line 1135](StRoot/StMyAnalysisMaker/StHIOverlayAngularities.cxx#L1135)
 
-* The important function for finding the exact $D^0$ jet is `DoesItHaveAGoodD0Jet()` [line 1748](./StRoot/StMyAnalysisMaker/StHIOverlayAngularities.cxx#L1748)
+* The important function for finding the exact $D^0$ jet is `DoesItHaveAGoodD0Jet()` [line 1748](StRoot/StMyAnalysisMaker/StHIOverlayAngularities.cxx#L1748)
 
 ---
 To run the whole chain, just use
@@ -29,7 +29,7 @@ To run the whole chain, just use
 star-submit send2014.xml
 ```
 
-or try automatization with merging using [run.csh](./run.csh) with atomatic merging and waiting for the jobs using [wait_for_jobs.sh](./wait_for_jobs.sh)
+or try automatization with merging using [run.csh](run.csh) with atomatic merging and waiting for the jobs using [wait_for_jobs.sh](wait_for_jobs.sh)
 
 ---
 
