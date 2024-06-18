@@ -29,7 +29,7 @@ To run the whole chain, just use
 star-submit send2014.xml
 ```
 
-or try automatization with merging using [run.csh](run.csh) with atomatic merging and waiting for the jobs using [wait_for_jobs.sh](wait_for_jobs.sh)
+or try automatization with merging using [run.csh](run.csh) with atomatic merging and waiting for the jobs using [wait_for_job.sh](wait_for_job.sh)
 
 ---
 
